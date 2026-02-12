@@ -1,9 +1,3 @@
-# vue3-antdv-admin
-
-基于 vite5.x + vue3.x + antd-design-vue4.x + typescript5.x 的后台管理系统
-
-
-## 演示地址
 
 <ul>
   <li>
@@ -37,6 +31,8 @@
    </a>
   </li>
 </ul>
+# vue3-antdv-admin
+基于 vite5.x + vue3.x + antd-design-vue4.x + typescript5.x 的后台管理系统
 - 账号：admin，密码：a123456
 - [项目文档](https://buqiyuan.github.io/vue3-antdv-admin-docs/)
 - [swagger 文档](https://nest-api.buqiyuan.site/api-docs/)
