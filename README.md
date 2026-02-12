@@ -1,38 +1,11 @@
 
-<ul>
-  <li>
-    <details>
-      <summary>
-        <a href="https://vue3-antdv-admin.pages.dev/" target="_blank">
-        https://vue3-antdv-admin.pages.dev/
-        </a>（墙内）
-      </summary>
-      只读，可以完整地预览项目的初始效果
-    </details>
-  </li>
-  <li>
-    <details>
-      <summary>
-        <a href="https://vue3-antd-admin.vercel.app/" target="_blank">
-        https://vue3-antd-admin.vercel.app/
-        </a>（墙外）
-      </summary>
-      <ul>
-        <li>
-        可随意 CRUD，所以你看到的数据可能已经被其他人修改过，而非项目得初始效果，并且数据库的数据会在每天凌晨 4.30 分重置一次。
-        </li>
-        <li>由于是白嫖的国外服务器资源，所以不保熟， 并可能还需要翻墙浏览。</li>
-      </ul>
-    </details>
-  </li>
-  <li>
-   <a href="https://nest-admin.buqiyuan.top/api-docs/" target="_blank">
-      Swagger 文档
-   </a>
-  </li>
-</ul>
 # vue3-antdv-admin
 基于 vite5.x + vue3.x + antd-design-vue4.x + typescript5.x 的后台管理系统
+- [https://vue3-antdv-admin.pages.dev/](https://vue3-antdv-admin.pages.dev/)（墙内）
+  - 只读，可以完整地预览项目的初始效果
+- [https://vue3-antd-admin.vercel.app/](https://vue3-antd-admin.vercel.app/)（墙外）
+  - 可随意 CRUD，所以你看到的数据可能已经被其他人修改过，而非项目得初始效果，并且数据库的数据会在每天凌晨 4.30 分重置一次。
+  - 由于是白嫖的国外服务器资源，所以不保熟， 并可能还需要翻墙浏览。
 - 账号：admin，密码：a123456
 - [项目文档](https://buqiyuan.github.io/vue3-antdv-admin-docs/)
 - [swagger 文档](https://nest-api.buqiyuan.site/api-docs/)
