@@ -5,13 +5,13 @@
  * 该文件为 @umijs/openapi 插件自动生成，请勿随意修改。如需修改请通过配置 openapi.config.ts 进行定制化。
  * */
 
-import { request, type RequestOptions } from '@/utils/request';
+import { request, type RequestOptions } from "@/utils/request";
 
-/** 获取字典类型列表 GET /api/system/dict-type */
+/** 获取字典类型列表 GET /system/dict-type */
 export async function dictTypeList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.DictTypeListParams,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   return request<{
     items?: API.DictTypeEntity[];
@@ -22,8 +22,8 @@ export async function dictTypeList(
       totalPages?: number;
       currentPage?: number;
     };
-  }>('/api/system/dict-type', {
-    method: 'GET',
+  }>("/system/dict-type", {
+    method: "GET",
     params: {
       ...params,
     },
@@ -31,69 +31,72 @@ export async function dictTypeList(
   });
 }
 
-/** 新增字典类型 POST /api/system/dict-type */
-export async function dictTypeCreate(body: API.DictTypeDto, options?: RequestOptions) {
-  return request<any>('/api/system/dict-type', {
-    method: 'POST',
+/** 新增字典类型 POST /system/dict-type */
+export async function dictTypeCreate(
+  body: API.DictTypeDto,
+  options?: RequestOptions
+) {
+  return request<any>("/system/dict-type", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
-    ...(options || { successMsg: '创建成功' }),
+    ...(options || { successMsg: "创建成功" }),
   });
 }
 
-/** 查询字典类型信息 GET /api/system/dict-type/${param0} */
+/** 查询字典类型信息 GET /system/dict-type/${param0} */
 export async function dictTypeInfo(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.DictTypeInfoParams,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<API.DictTypeEntity>(`/api/system/dict-type/${param0}`, {
-    method: 'GET',
+  return request<API.DictTypeEntity>(`/system/dict-type/${param0}`, {
+    method: "GET",
     params: { ...queryParams },
     ...(options || {}),
   });
 }
 
-/** 更新字典类型 POST /api/system/dict-type/${param0} */
+/** 更新字典类型 POST /system/dict-type/${param0} */
 export async function dictTypeUpdate(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.DictTypeUpdateParams,
   body: API.DictTypeDto,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<any>(`/api/system/dict-type/${param0}`, {
-    method: 'POST',
+  return request<any>(`/system/dict-type/${param0}`, {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
-    ...(options || { successMsg: '更新成功' }),
+    ...(options || { successMsg: "更新成功" }),
   });
 }
 
-/** 删除指定的字典类型 DELETE /api/system/dict-type/${param0} */
+/** 删除指定的字典类型 DELETE /system/dict-type/${param0} */
 export async function dictTypeDelete(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.DictTypeDeleteParams,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<any>(`/api/system/dict-type/${param0}`, {
-    method: 'DELETE',
+  return request<any>(`/system/dict-type/${param0}`, {
+    method: "DELETE",
     params: { ...queryParams },
-    ...(options || { successMsg: '删除成功' }),
+    ...(options || { successMsg: "删除成功" }),
   });
 }
 
-/** 一次性获取所有的字典类型(不分页) GET /api/system/dict-type/select-options */
+/** 一次性获取所有的字典类型(不分页) GET /system/dict-type/select-options */
 export async function dictTypeGetAll(options?: RequestOptions) {
-  return request<API.DictTypeEntity[]>('/api/system/dict-type/select-options', {
-    method: 'GET',
+  return request<API.DictTypeEntity[]>("/system/dict-type/select-options", {
+    method: "GET",
     ...(options || {}),
   });
 }

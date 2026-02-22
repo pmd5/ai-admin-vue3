@@ -5,13 +5,13 @@
  * 该文件为 @umijs/openapi 插件自动生成，请勿随意修改。如需修改请通过配置 openapi.config.ts 进行定制化。
  * */
 
-import { request, type RequestOptions } from '@/utils/request';
+import { request, type RequestOptions } from "@/utils/request";
 
-/** 获取参数配置列表 GET /api/system/param-config */
+/** 获取参数配置列表 GET /system/param-config */
 export async function paramConfigList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.ParamConfigListParams,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   return request<{
     items?: API.ParamConfigEntity[];
@@ -22,8 +22,8 @@ export async function paramConfigList(
       totalPages?: number;
       currentPage?: number;
     };
-  }>('/api/system/param-config', {
-    method: 'GET',
+  }>("/system/param-config", {
+    method: "GET",
     params: {
       ...params,
     },
@@ -31,61 +31,64 @@ export async function paramConfigList(
   });
 }
 
-/** 新增参数配置 POST /api/system/param-config */
-export async function paramConfigCreate(body: API.ParamConfigDto, options?: RequestOptions) {
-  return request<any>('/api/system/param-config', {
-    method: 'POST',
+/** 新增参数配置 POST /system/param-config */
+export async function paramConfigCreate(
+  body: API.ParamConfigDto,
+  options?: RequestOptions
+) {
+  return request<any>("/system/param-config", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
-    ...(options || { successMsg: '创建成功' }),
+    ...(options || { successMsg: "创建成功" }),
   });
 }
 
-/** 查询参数配置信息 GET /api/system/param-config/${param0} */
+/** 查询参数配置信息 GET /system/param-config/${param0} */
 export async function paramConfigInfo(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.ParamConfigInfoParams,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<API.ParamConfigEntity>(`/api/system/param-config/${param0}`, {
-    method: 'GET',
+  return request<API.ParamConfigEntity>(`/system/param-config/${param0}`, {
+    method: "GET",
     params: { ...queryParams },
     ...(options || {}),
   });
 }
 
-/** 更新参数配置 POST /api/system/param-config/${param0} */
+/** 更新参数配置 POST /system/param-config/${param0} */
 export async function paramConfigUpdate(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.ParamConfigUpdateParams,
   body: API.ParamConfigDto,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<any>(`/api/system/param-config/${param0}`, {
-    method: 'POST',
+  return request<any>(`/system/param-config/${param0}`, {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
-    ...(options || { successMsg: '更新成功' }),
+    ...(options || { successMsg: "更新成功" }),
   });
 }
 
-/** 删除指定的参数配置 DELETE /api/system/param-config/${param0} */
+/** 删除指定的参数配置 DELETE /system/param-config/${param0} */
 export async function paramConfigDelete(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.ParamConfigDeleteParams,
-  options?: RequestOptions,
+  options?: RequestOptions
 ) {
   const { id: param0, ...queryParams } = params;
-  return request<any>(`/api/system/param-config/${param0}`, {
-    method: 'DELETE',
+  return request<any>(`/system/param-config/${param0}`, {
+    method: "DELETE",
     params: { ...queryParams },
-    ...(options || { successMsg: '删除成功' }),
+    ...(options || { successMsg: "删除成功" }),
   });
 }

@@ -46,6 +46,32 @@ declare namespace API {
     remark: string;
   };
 
+  type AutoMarkInvalidDto = {
+    /** 更新批次 */
+    updateBatch: string;
+    /** 失败用例列表 */
+    failures: InvalidFailureItemDto[];
+  };
+
+  type BatchExecutionDto = {
+    /** 批量ID列表 */
+    ids: number[];
+    /** 批量操作类型 */
+    action: "execute" | "pause";
+  };
+
+  type BatchIdsDto = {
+    /** 批量ID列表 */
+    ids: number[];
+  };
+
+  type BatchLinkBugDto = {
+    /** 批量ID列表 */
+    ids: number[];
+    /** 关联的Bug ID列表 */
+    bugIds: number[];
+  };
+
   type CaptchaCaptchaByImgParams = {
     /** 验证码宽度 */
     width?: number;
@@ -202,7 +228,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 字典类型 ID */
     typeId: number;
     /** 字典项键名 */
@@ -264,7 +290,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 字典类型名称 */
     name: string;
     /** 字典类型code */
@@ -305,7 +331,7 @@ declare namespace API {
 
   type FileOpItem = {
     /** 文件类型 */
-    type: 'file' | 'dir';
+    type: "file" | "dir";
     /** 文件名称 */
     name: string;
   };
@@ -329,6 +355,13 @@ declare namespace API {
     id: string;
   };
 
+  type InvalidFailureItemDto = {
+    /** 用例ID */
+    id: number;
+    /** 失效原因 */
+    reason: string;
+  };
+
   type KickDto = {
     /** tokenId */
     tokenId: string;
@@ -338,7 +371,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 用户名 */
     username: string;
     /** 验证码 */
@@ -385,7 +418,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 用户名 */
     username: string;
     /** 登录IP */
@@ -401,7 +434,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 用户名 */
     username: string;
     /** 登录IP */
@@ -432,7 +465,12 @@ declare namespace API {
   };
 
   type MenuDto = {
-    /** 菜单类型 */
+    /** 
+菜单类型:
+- 0: 菜单
+- 1: 目录
+- 2: 权限   
+     */
     type: 0 | 1 | 2;
     /** 父级菜单 */
     parentId: number;
@@ -493,7 +531,12 @@ declare namespace API {
   };
 
   type MenuListParams = {
-    /** 菜单类型 */
+    /** 
+菜单类型:
+- 0: 菜单
+- 1: 目录
+- 2: 权限   
+     */
     type?: 0 | 1 | 2;
     /** 父级菜单 */
     parentId?: number;
@@ -543,7 +586,12 @@ declare namespace API {
   };
 
   type MenuUpdateDto = {
-    /** 菜单类型 */
+    /** 
+菜单类型:
+- 0: 菜单
+- 1: 目录
+- 2: 权限   
+     */
     type?: 0 | 1 | 2;
     /** 父级菜单 */
     parentId?: number;
@@ -606,6 +654,8 @@ declare namespace API {
     /** 搜索关键字 */
     key?: string;
   };
+
+  type Object = {};
 
   type OnlineUserInfo = {
     /** 登录ip */
@@ -686,7 +736,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 参数名称 */
     name: string;
     _t?: number;
@@ -803,7 +853,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 角色名称 */
     name?: string;
     /** 角色值 */
@@ -865,7 +915,7 @@ declare namespace API {
     /** 文件id */
     id: string;
     /** 文件类型 */
-    type: 'file' | 'dir';
+    type: "file" | "dir";
     /** 文件名称 */
     name: string;
     /** 存入时间 */
@@ -943,7 +993,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 文件名 */
     name: string;
     /** 文件后缀 */
@@ -1028,7 +1078,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 任务名称 */
     name?: string;
     /** 调用的服务 */
@@ -1108,6 +1158,148 @@ declare namespace API {
     id: number;
   };
 
+  type TestcaseDeleteParams = {
+    id: number;
+  };
+
+  type TestcaseDetailParams = {
+    id: number;
+  };
+
+  type TestcaseDto = {
+    /** 部门ID */
+    deptId: number;
+    /** 所属模块 */
+    module: string;
+    /** 所属页面 */
+    pageName: string;
+    /** 用例标题 */
+    title: string;
+    /** 用例描述 */
+    description?: string;
+    /** 优先级(1-高,2-中,3-低) */
+    priority: number;
+    /** 状态(0-失效,1-有效,2-待AI优化) */
+    status: 0 | 1 | 2;
+    /** 更新批次 */
+    updateBatch?: string;
+    /** 页面元素列表 */
+    relatedElements?: string[];
+    /** 执行脚本 */
+    executeScript?: string;
+    /** 历史执行记录 */
+    executionHistory?: Record<string, any>[];
+    /** 关联Bug ID列表 */
+    bugIds?: number[];
+    /** 失效原因 */
+    invalidReason?: string;
+  };
+
+  type TestcaseEntity = {
+    /** 部门ID */
+    deptId: number;
+    /** 所属模块 */
+    module: string;
+    /** 所属页面 */
+    pageName: string;
+    /** 用例标题 */
+    title: string;
+    /** 用例描述 */
+    description?: string;
+    /** 优先级(1-高,2-中,3-低) */
+    priority: number;
+    /** 状态(0-失效,1-有效,2-待AI优化) */
+    status: 0 | 1 | 2;
+    /** 更新批次 */
+    updateBatch?: string;
+    /** 页面元素列表 */
+    relatedElements?: string[];
+    /** 执行脚本 */
+    executeScript?: string;
+    /** 执行状态(0-暂停,1-执行中) */
+    executionStatus: 0 | 1;
+    /** 历史执行记录 */
+    executionHistory?: Record<string, any>[];
+    /** 关联Bug ID列表 */
+    bugIds?: number[];
+    /** 失效原因 */
+    invalidReason?: string;
+    /** 最近失效时间 */
+    lastFailedAt?: string;
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+  };
+
+  type TestcaseListParams = {
+    page?: number;
+    pageSize?: number;
+    field?: string;
+    order?: "ASC" | "DESC";
+    /** 部门ID */
+    deptId: number;
+    /** 所属模块 */
+    module?: string;
+    /** 所属页面 */
+    pageName?: string;
+    /** 用例标题 */
+    title?: string;
+    /** 用例描述 */
+    description?: string;
+    /** 优先级(1-高,2-中,3-低) */
+    priority?: number;
+    /** 状态(0-失效,1-有效,2-待AI优化) */
+    status?: 0 | 1 | 2;
+    /** 更新批次 */
+    updateBatch?: string;
+    /** 页面元素列表 */
+    relatedElements?: string[];
+    /** 执行脚本 */
+    executeScript?: string;
+    /** 历史执行记录 */
+    executionHistory?: Object[];
+    /** 关联Bug ID列表 */
+    bugIds?: number[];
+    /** 失效原因 */
+    invalidReason?: string;
+    /** 语义化检索关键词 */
+    keyword?: string;
+    _t?: number;
+  };
+
+  type TestcaseUpdateDto = {
+    /** 部门ID */
+    deptId?: number;
+    /** 所属模块 */
+    module?: string;
+    /** 所属页面 */
+    pageName?: string;
+    /** 用例标题 */
+    title?: string;
+    /** 用例描述 */
+    description?: string;
+    /** 优先级(1-高,2-中,3-低) */
+    priority?: number;
+    /** 状态(0-失效,1-有效,2-待AI优化) */
+    status?: 0 | 1 | 2;
+    /** 更新批次 */
+    updateBatch?: string;
+    /** 页面元素列表 */
+    relatedElements?: string[];
+    /** 执行脚本 */
+    executeScript?: string;
+    /** 历史执行记录 */
+    executionHistory?: Record<string, any>[];
+    /** 关联Bug ID列表 */
+    bugIds?: number[];
+    /** 失效原因 */
+    invalidReason?: string;
+  };
+
+  type TestcaseUpdateParams = {
+    id: number;
+  };
+
   type TodoDeleteParams = {
     id: number;
   };
@@ -1136,7 +1328,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 名称 */
     value: string;
     _t?: number;
@@ -1214,7 +1406,7 @@ declare namespace API {
     page?: number;
     pageSize?: number;
     field?: string;
-    order?: 'ASC' | 'DESC';
+    order?: "ASC" | "DESC";
     /** 头像 */
     avatar?: string;
     /** 登录账号 */

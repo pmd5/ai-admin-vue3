@@ -126,7 +126,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           secure: false,
           agent: new https.Agent(),
           changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, ''),
+          // rewrite: path => path.replace(/^\/api/, ''),
         },
         '^/upload': {
           // target: 'https://nest-admin.buqiyuan.top/upload',
