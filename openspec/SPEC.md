@@ -167,6 +167,7 @@ AI 助手在创建新文件时，必须严格遵守以下目录归属规则：
 | &nbsp;&nbsp;- 数据字典 | `system/dict-type/`, `dict-item/` | `dict.ts` | 系统字典配置。 |
 | **个人中心 (Account)** | `account/` | `user.ts` | 个人设置、密码修改。 |
 | **仪表盘 (Dashboard)** | `dashboard/` | - | 首页分析图表。 |
+| **测试用例管理 (Case)** | `case/` | - | 测试用例菜单与部门动态子树入口。 |
 | **网盘/文件 (Netdisk)** | `netdisk/` | - | 文件上传与管理系统。 |
 | **登录认证 (Auth)** | `login/` | `user.ts` | 登录页。 |
 | **消息推送 (SSE)** | - | `sse.ts` | 服务端推送相关状态。 |

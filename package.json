@@ -32,6 +32,7 @@
     "postinstall": "pnpm nx:build",
     "bootstrap": "pnpm install",
     "serve": "npm run dev",
+    "predev": "pnpm -r --filter \"@admin-pkg/vite-plugin-http2-proxy\" --filter \"@admin-pkg/vite-plugin-tinymce-resource\" --filter \"@admin-pkg/vite-plugin-msw\" run build",
     "dev": "vite dev",
     "build": "rimraf dist && cross-env NODE_ENV=production vite build",
     "build:watch": "rimraf dist && cross-env NODE_ENV=production vite build --watch",

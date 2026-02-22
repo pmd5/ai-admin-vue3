@@ -8,6 +8,65 @@ import Api from '@/api/';
 import { resetRouter } from '@/router';
 import { generateDynamicRoutes } from '@/router/helper/routeHelper';
 
+type MenuNode = {
+  id?: number;
+  path?: string;
+  name?: string;
+  component?: string;
+  meta?: Recordable;
+  children?: MenuNode[];
+  [key: string]: any;
+};
+
+const isCaseMenu = (node: MenuNode) => {
+  const nodePath = String(node.path || '').replace(/^\/+/, '');
+  return nodePath === 'case';
+};
+
+const findCaseMenu = (menus: MenuNode[]): MenuNode | undefined => {
+  for (const node of menus) {
+    if (isCaseMenu(node)) {
+      return node;
+    }
+    if (node.children?.length) {
+      const target = findCaseMenu(node.children);
+      if (target) {
+        return target;
+      }
+    }
+  }
+};
+
+const createCaseDeptMenus = (deptList: API.DeptEntity[]): MenuNode[] => {
+  return deptList.map((dept) => ({
+    id: dept.id,
+    path: `dept-${dept.id}`,
+    name: `case-dept-${dept.id}`,
+    component: 'case/list/index',
+    meta: {
+      title: dept.name,
+      type: 1,
+      show: 1,
+      keepAlive: 0,
+      orderNo: dept.orderNo,
+      caseDeptId: dept.id,
+    },
+    children: createCaseDeptMenus(dept.children || []),
+  }));
+};
+
+const patchCaseMenus = async (menus: MenuNode[]) => {
+  const caseMenu = findCaseMenu(menus);
+  if (!caseMenu) {
+    return menus;
+  }
+
+  const deptTree = await Api.systemDept.deptList({});
+  const deptMenus = createCaseDeptMenus(deptTree);
+  caseMenu.children = deptMenus;
+  return menus;
+};
+
 export const useUserStore = defineStore(
   'user',
   () => {
@@ -78,7 +137,8 @@ export const useUserStore = defineStore(
       // const wsStore = useWsStore();
       const [menusData, permsData] = await Promise.all([accountMenu(), accountPermissions()]);
       perms.value = permsData;
-      const result = generateDynamicRoutes(menusData as unknown as RouteRecordRaw[]);
+      const menusWithCaseChildren = await patchCaseMenus(menusData as unknown as MenuNode[]);
+      const result = generateDynamicRoutes(menusWithCaseChildren as unknown as RouteRecordRaw[]);
       menus.value = sortMenus(result);
     };
     /** 登出 */
