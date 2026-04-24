@@ -29,6 +29,16 @@
     if (isExt && extOpenMode !== 2) {
       window.open(item.path);
     } else {
+      const deptId = (item.meta as Recordable)?.caseDeptId;
+      if (deptId) {
+        router.push({
+          name: item.name,
+          query: {
+            deptId: String(deptId),
+          },
+        });
+        return;
+      }
       router.push({ name: item.name });
     }
   };
