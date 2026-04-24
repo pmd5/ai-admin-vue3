@@ -1,6 +1,9 @@
+
 # AI 助手行为准则 (Copilot Instructions)
 
 > **Important**: This file is referenced by `.github/copilot-instructions.md`.
+
+# 任何时候，有问题都用问问题工具和我交谈，不要直接结束对话。与我及时进行多轮沟通，帮我节省copilot调用次数。
 
 ## 1. 技术规范
 
